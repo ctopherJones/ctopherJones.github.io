@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Chris Jones | Group 1 Automotive</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+  <style>
+    :root {
+      --navy: #0a1628;
+      --deep: #0d1e38;
+      --gold: #c9a84c;
+      --gold-light: #e8c97a;
+      --cream: #f5f0e8;
+      --white: #ffffff;
+      --mid: #8a9ab5;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      min-height: 100vh;
+      background-color: var(--navy);
+      background-image:
+        radial-gradient(ellipse at 20% 50%, rgba(201,168,76,0.06) 0%, transparent 60%),
+        radial-gradient(ellipse at 80% 20%, rgba(255,255,255,0.03) 0%, transparent 50%),
+        repeating-linear-gradient(
+          90deg,
+          transparent,
+          transparent 80px,
+          rgba(255,255,255,0.012) 80px,
+          rgba(255,255,255,0.012) 81px
+        ),
+        repeating-linear-gradient(
+          0deg,
+          transparent,
+          transparent 80px,
+          rgba(255,255,255,0.012) 80px,
+          rgba(255,255,255,0.012) 81px
+        );
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 40px 20px;
+      font-family: 'Montserrat', sans-serif;
+    }
+
+    .card {
+      width: 100%;
+      max-width: 420px;
+      background: linear-gradient(160deg, #12243f 0%, #0a1a30 60%, #0d1e38 100%);
+      border: 1px solid rgba(201,168,76,0.25);
+      border-radius: 4px;
+      overflow: hidden;
+      box-shadow:
+        0 30px 80px rgba(0,0,0,0.6),
+        0 0 0 1px rgba(255,255,255,0.04) inset,
+        0 1px 0 rgba(201,168,76,0.3) inset;
+      opacity: 0;
+      transform: translateY(24px);
+      animation: fadeUp 0.8s cubic-bezier(0.22, 1, 0.36, 1) 0.1s forwards;
+    }
+
+    @keyframes fadeUp {
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Gold top bar */
+    .card-bar {
+      height: 3px;
+      background: linear-gradient(90deg, transparent, var(--gold) 20%, var(--gold-light) 50%, var(--gold) 80%, transparent);
+    }
+
+    /* Header section */
+    .card-header {
+      padding: 40px 40px 28px;
+      display: flex;
+      align-items: center;
+      gap: 28px;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .avatar-wrap {
+      position: relative;
+      flex-shrink: 0;
+    }
+
+    .avatar {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      object-fit: cover;
+      display: block;
+      border: 2px solid rgba(201,168,76,0.4);
+      background: #1a2d4a;
+    }
+
+    /* SVG placeholder avatar */
+    .avatar-placeholder {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      border: 2px solid rgba(201,168,76,0.4);
+      background: linear-gradient(145deg, #1a2d4a, #0f1e32);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      overflow: hidden;
+    }
+
+    .avatar-placeholder svg {
+      width: 48px;
+      height: 48px;
+      opacity: 0.5;
+    }
+
+    .avatar-ring {
+      position: absolute;
+      inset: -5px;
+      border-radius: 50%;
+      border: 1px solid rgba(201,168,76,0.2);
+      animation: pulse-ring 3s ease-in-out infinite;
+    }
+
+    @keyframes pulse-ring {
+      0%, 100% { opacity: 0.2; transform: scale(1); }
+      50% { opacity: 0.5; transform: scale(1.03); }
+    }
+
+    .header-text { flex: 1; min-width: 0; }
+
+    .name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 28px;
+      font-weight: 600;
+      color: var(--white);
+      letter-spacing: 0.5px;
+      line-height: 1.15;
+      margin-bottom: 4px;
+    }
+
+    .role {
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 6px;
+    }
+
+    .company {
+      font-size: 11px;
+      font-weight: 400;
+      letter-spacing: 1px;
+      color: var(--mid);
+      text-transform: uppercase;
+    }
+
+    /* Divider */
+    .divider {
+      height: 1px;
+      margin: 0 40px;
+      background: linear-gradient(90deg, transparent, rgba(201,168,76,0.3) 30%, rgba(201,168,76,0.3) 70%, transparent);
+    }
+
+    /* Contact section */
+    .card-body {
+      padding: 28px 40px 32px;
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding: 10px 0;
+      text-decoration: none;
+      color: inherit;
+      transition: all 0.2s ease;
+      border-bottom: 1px solid rgba(255,255,255,0.04);
+    }
+
+    .contact-item:last-of-type { border-bottom: none; }
+
+    .contact-item:hover .contact-label {
+      color: var(--gold-light);
+    }
+
+    .contact-item:hover .icon-wrap {
+      border-color: rgba(201,168,76,0.6);
+      background: rgba(201,168,76,0.1);
+    }
+
+    .icon-wrap {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      border: 1px solid rgba(255,255,255,0.1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      transition: all 0.2s ease;
+      background: rgba(255,255,255,0.03);
+    }
+
+    .icon-wrap svg {
+      width: 15px;
+      height: 15px;
+      stroke: var(--gold);
+      fill: none;
+      stroke-width: 1.8;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .contact-label {
+      font-size: 13px;
+      font-weight: 400;
+      color: #c8d4e8;
+      letter-spacing: 0.3px;
+      transition: color 0.2s;
+    }
+
+    /* Save contact button */
+    .btn-save {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      width: 100%;
+      margin-top: 24px;
+      padding: 14px;
+      background: linear-gradient(135deg, rgba(201,168,76,0.15), rgba(201,168,76,0.08));
+      border: 1px solid rgba(201,168,76,0.35);
+      border-radius: 2px;
+      color: var(--gold-light);
+      font-family: 'Montserrat', sans-serif;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      cursor: pointer;
+      text-decoration: none;
+      transition: all 0.25s ease;
+    }
+
+    .btn-save:hover {
+      background: linear-gradient(135deg, rgba(201,168,76,0.25), rgba(201,168,76,0.15));
+      border-color: rgba(201,168,76,0.6);
+      color: var(--gold-light);
+      box-shadow: 0 4px 20px rgba(201,168,76,0.15);
+    }
+
+    .btn-save svg {
+      width: 14px; height: 14px;
+      stroke: currentColor; fill: none;
+      stroke-width: 2; stroke-linecap: round; stroke-linejoin: round;
+    }
+
+    /* QR Section */
+    .card-footer {
+      padding: 24px 40px 32px;
+      border-top: 1px solid rgba(255,255,255,0.06);
+      display: flex;
+      align-items: center;
+      gap: 24px;
+    }
+
+    #qrcode {
+      flex-shrink: 0;
+      padding: 8px;
+      background: white;
+      border-radius: 2px;
+      display: inline-block;
+    }
+
+    #qrcode canvas, #qrcode img {
+      display: block;
+    }
+
+    .qr-label {
+      flex: 1;
+    }
+
+    .qr-label p {
+      font-size: 10px;
+      font-weight: 400;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: var(--mid);
+      line-height: 1.6;
+    }
+
+    .qr-label strong {
+      display: block;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 1.5px;
+      color: var(--gold);
+      margin-bottom: 4px;
+    }
+
+    /* Bottom bar */
+    .card-bottom-bar {
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(201,168,76,0.15) 50%, transparent);
+    }
+  </style>
+</head>
+<body>
+
+<div class="card">
+  <div class="card-bar"></div>
+
+  <div class="card-header">
+    <div class="avatar-wrap">
+      <div class="avatar-placeholder">
+        <!-- Placeholder person icon -->
+        <svg viewBox="0 0 24 24" fill="none" stroke="#8a9ab5" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="8" r="4"/>
+          <path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/>
+        </svg>
+      </div>
+      <div class="avatar-ring"></div>
+    </div>
+    <div class="header-text">
+      <div class="name">Chris Jones</div>
+      <div class="role">Sales</div>
+      <div class="company">Group 1 Automotive</div>
+    </div>
+  </div>
+
+  <div class="card-body">
+    <a class="contact-item" href="tel:5129162687">
+      <div class="icon-wrap">
+        <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.8a19.79 19.79 0 01-3.07-8.67A2 2 0 012 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 14.92v2z"/></svg>
+      </div>
+      <span class="contact-label">512-916-2687</span>
+    </a>
+
+    <a class="contact-item" href="mailto:christopherjones@group1auto.com">
+      <div class="icon-wrap">
+        <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+      </div>
+      <span class="contact-label">christopherjones@group1auto.com</span>
+    </a>
+
+    <a class="btn-save" id="vcardBtn" href="#" download="ChrisJones.vcf">
+      <svg viewBox="0 0 24 24"><path d="M19 21H5a2 2 0 01-2-2V5a2 2 0 012-2h11l5 5v11a2 2 0 01-2 2z"/><polyline points="17 21 17 13 7 13 7 21"/><polyline points="7 3 7 8 15 8"/></svg>
+      Save Contact
+    </a>
+  </div>
+
+  <div class="card-footer">
+    <div id="qrcode"></div>
+    <div class="qr-label">
+      <strong>Scan to Connect</strong>
+      <p>Point your camera at the QR code to open this card on any device.</p>
+    </div>
+  </div>
+
+  <div class="card-bottom-bar"></div>
+</div>
+
+<script>
+  // Generate QR code pointing to the current page URL
+  const pageUrl = window.location.href.split('?')[0];
+  new QRCode(document.getElementById("qrcode"), {
+    text: pageUrl,
+    width: 80,
+    height: 80,
+    colorDark: "#0a1628",
+    colorLight: "#ffffff",
+    correctLevel: QRCode.CorrectLevel.M
+  });
+
+  // Generate vCard for Save Contact
+  const vcard = `BEGIN:VCARD
+VERSION:3.0
+FN:Chris Jones
+N:Jones;Chris;;;
+ORG:Group 1 Automotive
+TITLE:Sales
+TEL;TYPE=WORK,VOICE:512-916-2687
+EMAIL;TYPE=WORK:christopherjones@group1auto.com
+URL:${pageUrl}
+END:VCARD`;
+
+  const blob = new Blob([vcard], { type: 'text/vcard' });
+  const url = URL.createObjectURL(blob);
+  document.getElementById('vcardBtn').href = url;
+</script>
+
+</body>
+</html>
