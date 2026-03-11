@@ -26,20 +26,8 @@
       background-image:
         radial-gradient(ellipse at 20% 50%, rgba(201,168,76,0.06) 0%, transparent 60%),
         radial-gradient(ellipse at 80% 20%, rgba(255,255,255,0.03) 0%, transparent 50%),
-        repeating-linear-gradient(
-          90deg,
-          transparent,
-          transparent 80px,
-          rgba(255,255,255,0.012) 80px,
-          rgba(255,255,255,0.012) 81px
-        ),
-        repeating-linear-gradient(
-          0deg,
-          transparent,
-          transparent 80px,
-          rgba(255,255,255,0.012) 80px,
-          rgba(255,255,255,0.012) 81px
-        );
+        repeating-linear-gradient(90deg, transparent, transparent 80px, rgba(255,255,255,0.012) 80px, rgba(255,255,255,0.012) 81px),
+        repeating-linear-gradient(0deg, transparent, transparent 80px, rgba(255,255,255,0.012) 80px, rgba(255,255,255,0.012) 81px);
       display: flex;
       align-items: center;
       justify-content: center;
@@ -54,26 +42,19 @@
       border: 1px solid rgba(201,168,76,0.25);
       border-radius: 4px;
       overflow: hidden;
-      box-shadow:
-        0 30px 80px rgba(0,0,0,0.6),
-        0 0 0 1px rgba(255,255,255,0.04) inset,
-        0 1px 0 rgba(201,168,76,0.3) inset;
+      box-shadow: 0 30px 80px rgba(0,0,0,0.6), 0 0 0 1px rgba(255,255,255,0.04) inset, 0 1px 0 rgba(201,168,76,0.3) inset;
       opacity: 0;
       transform: translateY(24px);
       animation: fadeUp 0.8s cubic-bezier(0.22, 1, 0.36, 1) 0.1s forwards;
     }
 
-    @keyframes fadeUp {
-      to { opacity: 1; transform: translateY(0); }
-    }
+    @keyframes fadeUp { to { opacity: 1; transform: translateY(0); } }
 
-    /* Gold top bar */
     .card-bar {
       height: 3px;
       background: linear-gradient(90deg, transparent, var(--gold) 20%, var(--gold-light) 50%, var(--gold) 80%, transparent);
     }
 
-    /* Header section */
     .card-header {
       padding: 40px 40px 28px;
       display: flex;
@@ -82,10 +63,7 @@
       border-bottom: 1px solid rgba(255,255,255,0.06);
     }
 
-    .avatar-wrap {
-      position: relative;
-      flex-shrink: 0;
-    }
+    .avatar-wrap { position: relative; flex-shrink: 0; }
 
     .avatar {
       width: 80px;
@@ -95,26 +73,6 @@
       display: block;
       border: 2px solid rgba(201,168,76,0.4);
       background: #1a2d4a;
-    }
-
-    /* SVG placeholder avatar */
-    .avatar-placeholder {
-      width: 80px;
-      height: 80px;
-      border-radius: 50%;
-      border: 2px solid rgba(201,168,76,0.4);
-      background: linear-gradient(145deg, #1a2d4a, #0f1e32);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-shrink: 0;
-      overflow: hidden;
-    }
-
-    .avatar-placeholder svg {
-      width: 48px;
-      height: 48px;
-      opacity: 0.5;
     }
 
     .avatar-ring {
@@ -159,17 +117,7 @@
       text-transform: uppercase;
     }
 
-    /* Divider */
-    .divider {
-      height: 1px;
-      margin: 0 40px;
-      background: linear-gradient(90deg, transparent, rgba(201,168,76,0.3) 30%, rgba(201,168,76,0.3) 70%, transparent);
-    }
-
-    /* Contact section */
-    .card-body {
-      padding: 28px 40px 32px;
-    }
+    .card-body { padding: 28px 40px 32px; }
 
     .contact-item {
       display: flex;
@@ -183,15 +131,8 @@
     }
 
     .contact-item:last-of-type { border-bottom: none; }
-
-    .contact-item:hover .contact-label {
-      color: var(--gold-light);
-    }
-
-    .contact-item:hover .icon-wrap {
-      border-color: rgba(201,168,76,0.6);
-      background: rgba(201,168,76,0.1);
-    }
+    .contact-item:hover .contact-label { color: var(--gold-light); }
+    .contact-item:hover .icon-wrap { border-color: rgba(201,168,76,0.6); background: rgba(201,168,76,0.1); }
 
     .icon-wrap {
       width: 36px;
@@ -224,14 +165,6 @@
       transition: color 0.2s;
     }
 
-  <a class="contact-item" href="https://www.google.com/search?q=Group+1+Ford+of+South+Austin&sca_esv=491349f24674a34b&hl=en&authuser=0&biw=1680&bih=962&sxsrf=ANbL-n6W75ktHJNd2uZ4bfZhp5THacapZA%3A1773075365293&ei=pfuuabzOEYKmqtsPt9_muAY&ved=0ahUKEwj8tLu6pJOTAxUCk2oFHbevGWcQ4dUDCBE&uact=5&oq=Group+1+Ford+of+South+Austin&gs_lp=Egxnd3Mtd2l6LXNlcnAiHEdyb3VwIDEgRm9yZCBvZiBTb3V0aCBBdXN0aW4yBBAjGCcyDhAuGK8BGMcBGIAEGI4FMgsQLhiABBjHARivATIFEAAYgAQyBhAAGBYYHjIGEAAYFhgeMgYQABgWGB4yBhAAGBYYHjIGEAAYFhgeMgIQJkilFlCKE1iKE3AFeAGQAQCYAW-gAW-qAQMwLjG4AQPIAQD4AQGYAgagAooBwgIKEAAYRxjWBBiwA5gDAIgGAZAGCJIHAzUuMaAH_Q-yBwMwLjG4B3bCBwMyLTbIBxaACAE&sclient=gws-wiz-serp#lrd=" target="_blank">
-  <div class="icon-wrap">
-    <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-  </div>
-  <span class="contact-label">Leave a Google Review</span>
-</a>
-
-    /* Save contact button */
     .btn-save {
       display: flex;
       align-items: center;
@@ -267,7 +200,6 @@
       stroke-width: 2; stroke-linecap: round; stroke-linejoin: round;
     }
 
-    /* QR Section */
     .card-footer {
       padding: 24px 40px 32px;
       border-top: 1px solid rgba(255,255,255,0.06);
@@ -284,13 +216,9 @@
       display: inline-block;
     }
 
-    #qrcode canvas, #qrcode img {
-      display: block;
-    }
+    #qrcode canvas, #qrcode img { display: block; }
 
-    .qr-label {
-      flex: 1;
-    }
+    .qr-label { flex: 1; }
 
     .qr-label p {
       font-size: 10px;
@@ -310,7 +238,6 @@
       margin-bottom: 4px;
     }
 
-    /* Bottom bar */
     .card-bottom-bar {
       height: 1px;
       background: linear-gradient(90deg, transparent, rgba(201,168,76,0.15) 50%, transparent);
@@ -349,6 +276,14 @@
       <span class="contact-label">christopherjones@group1auto.com</span>
     </a>
 
+    <!-- ✏️ Replace PASTE_YOUR_GOOGLE_REVIEW_URL_HERE with your full Google review URL -->
+    <a class="contact-item" href="PASTE_YOUR_GOOGLE_REVIEW_URL_HERE" target="_blank">
+      <div class="icon-wrap">
+        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+      </div>
+      <span class="contact-label">Leave a Google Review</span>
+    </a>
+
     <a class="btn-save" id="vcardBtn" href="#" download="ChrisJones.vcf">
       <svg viewBox="0 0 24 24"><path d="M19 21H5a2 2 0 01-2-2V5a2 2 0 012-2h11l5 5v11a2 2 0 01-2 2z"/><polyline points="17 21 17 13 7 13 7 21"/><polyline points="7 3 7 8 15 8"/></svg>
       Save Contact
@@ -367,7 +302,6 @@
 </div>
 
 <script>
-  // Generate QR code pointing to the current page URL
   const pageUrl = window.location.href.split('?')[0];
   new QRCode(document.getElementById("qrcode"), {
     text: pageUrl,
@@ -378,7 +312,6 @@
     correctLevel: QRCode.CorrectLevel.M
   });
 
-  // Generate vCard for Save Contact
   const vcard = `BEGIN:VCARD
 VERSION:3.0
 FN:Chris Jones
